@@ -13,7 +13,7 @@ class NetworkAndApiErrorHandler implements ApiErrorHandler {
   final Duration timeoutDuration;
   final Logger? logger;
 
-  NetworkAndApiErrorHandler({this.logger, this.timeoutDuration = defaultTimeout});
+  NetworkAndApiErrorHandler({required this.logger, this.timeoutDuration = defaultTimeout});
 
   @override
   Future<BaseDto> handleRequestException(

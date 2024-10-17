@@ -17,7 +17,7 @@ class ApiRequestService {
   final Duration timeoutDuration;
 
   ApiRequestService(
-      {required this.errorHandler, this.logger, this.timeoutDuration = defaultTimeout});
+      {required this.logger, required this.errorHandler, this.timeoutDuration = defaultTimeout});
 
   Map<String, String> getHeadersForUsernameAndPassword(
       {required String? username, required String? password}) {
