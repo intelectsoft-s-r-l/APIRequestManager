@@ -10,7 +10,7 @@ import 'package:http/http.dart';
 
 class NetworkAndApiErrorHandler implements ApiErrorHandler {
   final Duration timeoutDuration;
-  final Logger logger;
+  final Logger? logger;
   final bool usePascalCaseErrorFields;
 
   NetworkAndApiErrorHandler(
@@ -29,7 +29,7 @@ class NetworkAndApiErrorHandler implements ApiErrorHandler {
     } else if (error is SocketException) {
       return await handleSocketException(uri, error, doLog);
     } else {
-      logger.logExceptionWithStack(error, stackTrace, logger.getMethodAndClassName());
+      logger?.logExceptionWithStack(error, stackTrace, logger!.getMethodAndClassName());
       return getJsonForErrorInfo(RepositoryError.internalError, 'Unknown internal error.');
     }
   }
@@ -42,8 +42,8 @@ class NetworkAndApiErrorHandler implements ApiErrorHandler {
     required bool doLog,
   }) async {
     if (doLog) {
-      logger.logToCloud(
-          action: logger.getMethodAndClassName(callDepth: 1),
+      logger?.logToCloud(
+          action: logger!.getMethodAndClassName(callDepth: 1),
           message: 'Called ${uri.path} with failure',
           details:
               'Request returned status code ${response.statusCode}. I sent body: $requestBody.',
@@ -59,8 +59,8 @@ class NetworkAndApiErrorHandler implements ApiErrorHandler {
           'The request returned SocketException, since there is no internet connection available.');
     }
     if (doLog) {
-      logger.logToCloud(
-          action: logger.getMethodAndClassName(),
+      logger?.logToCloud(
+          action: logger!.getMethodAndClassName(),
           message: '/${uri.path} returned SocketException.',
           details: 'The exception: ${e.toString()}',
           isError: true);
@@ -71,8 +71,8 @@ class NetworkAndApiErrorHandler implements ApiErrorHandler {
 
   BaseDto handleTimeoutException(Uri uri, bool doLog, Duration timeoutDuration) {
     if (doLog) {
-      logger.logToCloud(
-        action: logger.getMethodAndClassName(),
+      logger?.logToCloud(
+        action: logger!.getMethodAndClassName(),
         message: '/${uri.path} did not respond in $timeoutDuration seconds.',
         details: '',
         isError: true,
