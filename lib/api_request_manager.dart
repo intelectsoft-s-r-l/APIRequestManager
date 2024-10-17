@@ -5,6 +5,8 @@ import 'package:api_request_manager/models/base_dto.dart';
 import 'package:api_request_manager/models/http_method.dart';
 import 'package:api_request_manager/interfaces/logger.dart';
 
+export 'export_interfaces.dart';
+
 class ApiRequestManager {
   final ApiRequestService _manager;
 
