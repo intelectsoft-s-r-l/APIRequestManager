@@ -1,3 +1,4 @@
+import 'package:api_request_manager/constants.dart';
 import 'package:api_request_manager/interfaces/api_error_handler.dart';
 import 'package:api_request_manager/services/api_request_service.dart';
 import 'package:api_request_manager/models/base_dto.dart';
@@ -10,7 +11,7 @@ class ApiRequestManager {
   ApiRequestManager({
     required Logger? logger,
     required ApiErrorHandler errorHandler,
-    timeoutDuration = const Duration(seconds: 20),
+    timeoutDuration = defaultTimeout,
   }) : _manager = ApiRequestService(
           logger: logger,
           errorHandler: errorHandler,

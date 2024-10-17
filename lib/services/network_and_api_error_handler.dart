@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:api_request_manager/constants.dart';
 import 'package:api_request_manager/interfaces/api_error_handler.dart';
 import 'package:api_request_manager/models/base_dto.dart';
 import 'package:api_request_manager/services/internet_connection_checker.dart';
@@ -11,12 +12,8 @@ import 'package:http/http.dart';
 class NetworkAndApiErrorHandler implements ApiErrorHandler {
   final Duration timeoutDuration;
   final Logger? logger;
-  final bool usePascalCaseErrorFields;
 
-  NetworkAndApiErrorHandler(
-      {required this.logger,
-      required this.usePascalCaseErrorFields,
-      required this.timeoutDuration});
+  NetworkAndApiErrorHandler({required this.logger, this.timeoutDuration = defaultTimeout});
 
   @override
   Future<BaseDto> handleRequestException(

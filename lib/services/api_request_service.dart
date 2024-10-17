@@ -3,6 +3,7 @@ library api_request_manager;
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:api_request_manager/constants.dart';
 import 'package:api_request_manager/models/base_dto.dart';
 import 'package:api_request_manager/interfaces/api_error_handler.dart';
 import 'package:api_request_manager/models/http_method.dart';
@@ -16,7 +17,7 @@ class ApiRequestService {
   final Duration timeoutDuration;
 
   ApiRequestService(
-      {required this.logger, required this.errorHandler, required this.timeoutDuration});
+      {required this.logger, required this.errorHandler, this.timeoutDuration = defaultTimeout});
 
   Map<String, String> getHeadersForUsernameAndPassword(
       {required String? username, required String? password}) {
