@@ -16,4 +16,9 @@ class BaseDto {
       errorMessage: json[errorMessageName] as String?,
     );
   }
+
+  @override
+  String toString() {
+    return 'BaseDto(errorCode: $errorCode, errorMessage: ${errorMessage ?? "null"})';
+  }
 }
