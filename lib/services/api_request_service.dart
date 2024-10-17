@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 class ApiRequestService {
-  final Logger logger;
+  final Logger? logger;
   final ApiErrorHandler errorHandler;
   final Duration timeoutDuration;
 
@@ -47,11 +47,11 @@ class ApiRequestService {
       Map<String, dynamic> json = jsonDecode(response.body);
       T dto = fromJson(json);
       if (doLog) {
-        unawaited(logger.logRequestResult(
+        unawaited(logger?.logRequestResult(
             body: body,
             endpoint: uri.path,
             jsonResult: json,
-            action: logger.getMethodAndClassName(),
+            action: logger!.getMethodAndClassName(),
             dto: dto));
       }
       return dto;

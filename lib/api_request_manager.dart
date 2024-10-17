@@ -8,7 +8,7 @@ class ApiRequestManager {
   final ApiRequestService _manager;
 
   ApiRequestManager({
-    required Logger logger,
+    required Logger? logger,
     required ApiErrorHandler errorHandler,
     timeoutDuration = const Duration(seconds: 20),
   }) : _manager = ApiRequestService(
