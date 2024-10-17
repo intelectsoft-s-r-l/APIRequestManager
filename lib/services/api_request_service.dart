@@ -42,7 +42,7 @@ class ApiRequestService {
       Response response =
           await doRequest(httpMethod: httpMethod, uri: uri, headers: headers, body: body);
       if (!isStatusCodeOk(response)) {
-        return errorHandler.handleStatusCodeNotOk(
+        return await errorHandler.handleStatusCodeNotOk(
             uri: uri, response: response, requestBody: body, doLog: doLog) as T;
       }
       Map<String, dynamic> json = jsonDecode(response.body);
@@ -57,7 +57,7 @@ class ApiRequestService {
       }
       return dto;
     } catch (error, stackTrace) {
-      return errorHandler.handleRequestException(
+      return await errorHandler.handleRequestException(
           error: error, stackTrace: stackTrace, uri: uri, doLog: doLog) as T;
     }
   }
