@@ -18,6 +18,10 @@ class ApiRequestManager {
           timeoutDuration: timeoutDuration,
         );
 
+  Map<String, String> getHeadersForUsernameAndPassword(
+          {required String? username, required String? password}) =>
+      ApiRequestService.getHeadersForUsernameAndPassword(username: username, password: password);
+
   Future<T> get<T extends BaseDto>(
       {required Uri uri,
       required T Function(Map<String, dynamic>) fromJson,

@@ -19,7 +19,7 @@ class ApiRequestService {
   ApiRequestService(
       {required this.logger, required this.errorHandler, this.timeoutDuration = defaultTimeout});
 
-  Map<String, String> getHeadersForUsernameAndPassword(
+  static Map<String, String> getHeadersForUsernameAndPassword(
       {required String? username, required String? password}) {
     Map<String, String> result = <String, String>{
       'Content-type': 'application/json',
