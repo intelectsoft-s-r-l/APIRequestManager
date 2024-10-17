@@ -9,8 +9,8 @@ class ApiRequestManager {
   final ApiRequestService _manager;
 
   ApiRequestManager({
-    required Logger? logger,
     required ApiErrorHandler errorHandler,
+    Logger? logger,
     timeoutDuration = defaultTimeout,
   }) : _manager = ApiRequestService(
           logger: logger,
