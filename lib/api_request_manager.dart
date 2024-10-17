@@ -25,43 +25,46 @@ class ApiRequestManager {
   Future<T> get<T extends BaseDto>(
       {required Uri uri,
       required T Function(Map<String, dynamic>) fromJson,
+      bool doLog = true,
       Map<String, String>? headers}) {
     return _manager.getResponseFor(
-      uri: uri,
-      headers: headers,
-      body: null,
-      httpMethod: HttpMethod.get,
-      fromJson: fromJson,
-    );
+        uri: uri,
+        headers: headers,
+        body: null,
+        httpMethod: HttpMethod.get,
+        fromJson: fromJson,
+        doLog: _manager.logger != null && doLog);
   }
 
   Future<T> post<T extends BaseDto>({
     required Uri uri,
     required T Function(Map<String, dynamic>) fromJson,
     String? body,
+    bool doLog = true,
     Map<String, String>? headers,
   }) {
     return _manager.getResponseFor(
-      uri: uri,
-      headers: headers,
-      body: body,
-      httpMethod: HttpMethod.post,
-      fromJson: fromJson,
-    );
+        uri: uri,
+        headers: headers,
+        body: body,
+        httpMethod: HttpMethod.post,
+        fromJson: fromJson,
+        doLog: _manager.logger != null && doLog);
   }
 
   Future<T> delete<T extends BaseDto>({
     required Uri uri,
     required T Function(Map<String, dynamic>) fromJson,
     String? body,
+    bool doLog = true,
     Map<String, String>? headers,
   }) {
     return _manager.getResponseFor(
-      uri: uri,
-      headers: headers,
-      body: body,
-      httpMethod: HttpMethod.delete,
-      fromJson: fromJson,
-    );
+        uri: uri,
+        headers: headers,
+        body: body,
+        httpMethod: HttpMethod.delete,
+        fromJson: fromJson,
+        doLog: _manager.logger != null && doLog);
   }
 }
