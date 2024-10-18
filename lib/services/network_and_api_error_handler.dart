@@ -80,6 +80,7 @@ class NetworkAndApiErrorHandler implements ApiErrorHandler {
   }
 
   BaseDto getJsonForErrorInfo(RepositoryError repositoryError, String message) {
-    return BaseDto(errorCode: repositoryError.code, errorMessage: message);
+    return BaseDto(
+        repositoryError: repositoryError, errorCode: repositoryError.code, errorMessage: message);
   }
 }
