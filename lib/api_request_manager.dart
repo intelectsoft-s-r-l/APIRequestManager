@@ -24,7 +24,7 @@ class ApiRequestManager {
           {required String? username, required String? password}) =>
       ApiRequestService.getHeadersForUsernameAndPassword(username: username, password: password);
 
-  Future<T> get<T extends BaseDto>(
+  Future<BaseDto> get<T extends BaseDto>(
       {required Uri uri,
       required T Function(Map<String, dynamic>) fromJson,
       bool doLog = true,
@@ -38,7 +38,7 @@ class ApiRequestManager {
         doLog: _manager.logger != null && doLog);
   }
 
-  Future<T> post<T extends BaseDto>({
+  Future<BaseDto> post<T extends BaseDto>({
     required Uri uri,
     required T Function(Map<String, dynamic>) fromJson,
     String? body,
@@ -54,7 +54,7 @@ class ApiRequestManager {
         doLog: _manager.logger != null && doLog);
   }
 
-  Future<T> delete<T extends BaseDto>({
+  Future<BaseDto> delete<T extends BaseDto>({
     required Uri uri,
     required T Function(Map<String, dynamic>) fromJson,
     String? body,
