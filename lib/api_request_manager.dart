@@ -54,6 +54,38 @@ class ApiRequestManager {
         doLog: _manager.logger != null && doLog);
   }
 
+  Future<BaseDto> put<T extends BaseDto>({
+    required Uri uri,
+    required T Function(Map<String, dynamic>) fromJson,
+    String? body,
+    bool doLog = true,
+    Map<String, String>? headers,
+  }) {
+    return _manager.getResponseFor(
+        uri: uri,
+        headers: headers,
+        body: body,
+        httpMethod: HttpMethod.put,
+        fromJson: fromJson,
+        doLog: _manager.logger != null && doLog);
+  }
+
+  Future<BaseDto> patch<T extends BaseDto>({
+    required Uri uri,
+    required T Function(Map<String, dynamic>) fromJson,
+    String? body,
+    bool doLog = true,
+    Map<String, String>? headers,
+  }) {
+    return _manager.getResponseFor(
+        uri: uri,
+        headers: headers,
+        body: body,
+        httpMethod: HttpMethod.patch,
+        fromJson: fromJson,
+        doLog: _manager.logger != null && doLog);
+  }
+
   Future<BaseDto> delete<T extends BaseDto>({
     required Uri uri,
     required T Function(Map<String, dynamic>) fromJson,
