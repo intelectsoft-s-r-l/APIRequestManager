@@ -72,6 +72,10 @@ class ApiRequestService {
         return await http.get(uri, headers: headers).timeout(timeoutDuration);
       case HttpMethod.post:
         return await http.post(uri, headers: headers, body: body).timeout(timeoutDuration);
+      case HttpMethod.put:
+        return await http.put(uri, headers: headers, body: body).timeout(timeoutDuration);
+      case HttpMethod.patch:
+        return await http.patch(uri, headers: headers, body: body).timeout(timeoutDuration);
       case HttpMethod.delete:
         return await http.delete(uri, headers: headers, body: body).timeout(timeoutDuration);
     }

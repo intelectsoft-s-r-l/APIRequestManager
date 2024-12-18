@@ -1,5 +1,7 @@
 enum HttpMethod {
-  get,
   post,
+  put,
+  patch,
+  get,
   delete;
 }
